@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Docker可以从Dockerfile中一步一步的读取指令来自动的创建镜像，常使用Dockerfile来创建用户自定义的镜像。格式如下：  12# CommentINSTRUCTION arguments  大小写不敏感，建议大写。  命令介绍FROM123FROM  &amp;lt;image&amp;gt;或FROM &amp;lt;image&amp;gt;:&amp;lt;tag&amp;gt;  指定以哪一个镜像为基准。 首先检查本">
+    <meta name="description" content="Introduction Docker可以从Dockerfile中一步一步的读取指令来自动的创建镜像，常使用Dockerfile来创建用户自定义的镜像。格式如下：  12# CommentINSTRUCTION arguments  大小写不敏感，建议大写。  命令介绍FROM123FROM  &amp;lt;image&amp;gt;或FROM &amp;lt;image&amp;gt;:&amp;lt;tag&amp;gt;  指定以哪一个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dockerfile commands">
 <meta property="og:url" content="http://blog.betterself.cn/2018/01/28/Dockerfile-commands/index.html">
 <meta property="og:site_name" content="Veni">
-<meta property="og:description" content="Docker可以从Dockerfile中一步一步的读取指令来自动的创建镜像，常使用Dockerfile来创建用户自定义的镜像。格式如下：  12# CommentINSTRUCTION arguments  大小写不敏感，建议大写。  命令介绍FROM123FROM  &amp;lt;image&amp;gt;或FROM &amp;lt;image&amp;gt;:&amp;lt;tag&amp;gt;  指定以哪一个镜像为基准。 首先检查本">
-<meta property="og:updated_time" content="2018-01-28T08:03:59.000Z">
+<meta property="og:description" content="Introduction Docker可以从Dockerfile中一步一步的读取指令来自动的创建镜像，常使用Dockerfile来创建用户自定义的镜像。格式如下：  12# CommentINSTRUCTION arguments  大小写不敏感，建议大写。  命令介绍FROM123FROM  &amp;lt;image&amp;gt;或FROM &amp;lt;image&amp;gt;:&amp;lt;tag&amp;gt;  指定以哪一个">
+<meta property="og:updated_time" content="2018-01-28T09:54:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dockerfile commands">
-<meta name="twitter:description" content="Docker可以从Dockerfile中一步一步的读取指令来自动的创建镜像，常使用Dockerfile来创建用户自定义的镜像。格式如下：  12# CommentINSTRUCTION arguments  大小写不敏感，建议大写。  命令介绍FROM123FROM  &amp;lt;image&amp;gt;或FROM &amp;lt;image&amp;gt;:&amp;lt;tag&amp;gt;  指定以哪一个镜像为基准。 首先检查本">
+<meta name="twitter:description" content="Introduction Docker可以从Dockerfile中一步一步的读取指令来自动的创建镜像，常使用Dockerfile来创建用户自定义的镜像。格式如下：  12# CommentINSTRUCTION arguments  大小写不敏感，建议大写。  命令介绍FROM123FROM  &amp;lt;image&amp;gt;或FROM &amp;lt;image&amp;gt;:&amp;lt;tag&amp;gt;  指定以哪一个">
     
     
         
@@ -95,7 +95,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令介绍"><span class="toc-number">1.</span> <span class="toc-text">命令介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM"><span class="toc-number">1.1.</span> <span class="toc-text">FROM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN"><span class="toc-number">1.2.</span> <span class="toc-text">RUN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MAINTAINER"><span class="toc-number">1.3.</span> <span class="toc-text">MAINTAINER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The"><span class="toc-number">1.4.</span> <span class="toc-text">The file1* .dockerignore用来忽略上下文目录中包含的一些image用不到的文件，它们不会传送到docker daemon。规则使用go语言的匹配语法。如：</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令介绍"><span class="toc-number">1.1.</span> <span class="toc-text">命令介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM"><span class="toc-number">1.1.1.</span> <span class="toc-text">FROM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN"><span class="toc-number">1.1.2.</span> <span class="toc-text">RUN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENTRYPOINT"><span class="toc-number">1.1.3.</span> <span class="toc-text">ENTRYPOINT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMD"><span class="toc-number">1.1.4.</span> <span class="toc-text">CMD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXPOSE"><span class="toc-number">1.1.5.</span> <span class="toc-text">EXPOSE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADD"><span class="toc-number">1.1.6.</span> <span class="toc-text">ADD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#COPY"><span class="toc-number">1.1.7.</span> <span class="toc-text">COPY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENV"><span class="toc-number">1.1.8.</span> <span class="toc-text">ENV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VOLUME"><span class="toc-number">1.1.9.</span> <span class="toc-text">VOLUME</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WORKDIR"><span class="toc-number">1.1.10.</span> <span class="toc-text">WORKDIR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ONBUILD"><span class="toc-number">1.1.11.</span> <span class="toc-text">ONBUILD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#USER"><span class="toc-number">1.1.12.</span> <span class="toc-text">USER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MAINTAINER"><span class="toc-number">1.1.13.</span> <span class="toc-text">MAINTAINER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-dockerignore-file"><span class="toc-number">1.1.14.</span> <span class="toc-text">The .dockerignore file</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -129,10 +129,10 @@
   
 
   <div class="content" itemprop="articleBody">
-    <ul>
+    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><ul>
 <li>Docker可以从Dockerfile中一步一步的读取指令来自动的创建镜像，常使用Dockerfile来创建用户自定义的镜像。格式如下：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Comment</span></span><br><span class="line">INSTRUCTION arguments</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Comment</span><br><span class="line">INSTRUCTION arguments</span><br></pre></td></tr></table></figure>
 <ul>
 <li>大小写不敏感，建议大写。</li>
 </ul>
@@ -145,27 +145,92 @@
 <ul>
 <li>RUN指令会在当前镜像的顶层执行任何命令，并commit成新的（中间）镜像，提交的镜像作为当前镜像。</li>
 </ul>
-<p>shell格式，相当于执行 <figure class="highlight plain"><figcaption><span>-c "<command>"```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">```RUN apt-get install vim -y``` </span><br><span class="line">exec格式，不会触发shell，所以$HOME这样的环境变量无法使用，但它可以在没有bash的镜像中执行，而且可以避免错误的解析命令字符串：</span><br><span class="line"></span><br><span class="line">```RUN [&quot;apt-get&quot;, &quot;install&quot;, &quot;vim&quot;, &quot;-y&quot;]</span><br></pre></td></tr></table></figure></p>
-<p>或<br><figure class="highlight plain"><figcaption><span>["/bin/bash", "-c", "apt-get install vim -y"]```  与shell风格相同</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### ENTRYPOINT</span><br><span class="line">* ENTRYPOINT命令设置在容器启动时执行命令，如果有多个ENTRYPOINT指令，那只有最后一个生效。有以下两种命令格式：</span><br><span class="line">``` ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;] </span><br><span class="line">或 exec 格式（推荐）</span><br><span class="line">ENTRYPOINT command param1 param2    shell格式</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight docker"><figcaption><span>run -it --rm -p 80:80 nginx ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* 使用exec格式中，在docker <span class="keyword">run</span><span class="bash"> &lt;image&gt;的所有参数，都会追加到ENTRYPOINT之后，并且会覆盖CMD所指定的参数（如果有的话）。如果需要覆盖ENTRYPOINT指令，使用--entrypoint 参数。</span></span><br><span class="line"><span class="bash">* 使用shell格式，ENTRYPOINT相当于执行/bin/sh -c &lt;<span class="built_in">command</span>..&gt;，这种格式会忽略docker run和CMD的所有参数。</span></span><br><span class="line"><span class="bash">* 当 ENTRYPOINT 和CMD 同时设置命令时，仅前者有效，不管命令先后顺序。</span></span><br><span class="line"><span class="bash">* 当 CMD 仅设置参数时，CMD 会被追加。</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">### CMD</span></span></span><br><span class="line"><span class="bash">``` CMD [<span class="string">"executable"</span>,<span class="string">"param1"</span>,<span class="string">"param2"</span>] </span></span><br><span class="line"><span class="bash">CMD [<span class="string">"param1"</span>,<span class="string">"param2"</span>]  (as default parameters to ENTRYPOINT)</span></span><br><span class="line"><span class="bash">CMD <span class="built_in">command</span> param1 param2  (shell格式)</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>一个Dockerfile里仅有最后一个<figure class="highlight plain"><figcaption><span>指令有效，```CMD```指令的主要功能是在build完成后，为了给```docker run```启动到容器时提供默认命令或参数。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* 它与ENTRYPOINT的功能极为相似，区别在于如果```docker run```后面出现与CMD指定的相同命令，那么CMD会被覆盖；而ENTRYPOINT会把容器名后面的所有内容都当成参数传递给其指定的命令（不会对命令覆盖，注意：在exec格式下）。</span><br><span class="line">* CMD与RUN的区别在于，RUN是在build成镜像时就运行的，先于CMD和ENTRYPOINT的，CMD会在每次启动容器的时候运行，而RUN只在创建镜像时执行一次，固化在image中。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### EXPOSE</span><br><span class="line">* EXPOSE指令告诉容器在运行时要监听的端口，但是这个端口是用于多个容器之间通信用的（links），外面的host是访问不到的。要把端口暴露给外面的主机，在启动容器时使用-p选项。</span><br><span class="line">示例：</span><br></pre></td></tr></table></figure></li>
+<p>shell格式，相当于执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/bin/sh -c &quot;&lt;command&gt;&quot;</span><br><span class="line">RUN apt-get install vim -y</span><br></pre></td></tr></table></figure>
+<p>exec格式，不会触发shell，所以$HOME这样的环境变量无法使用，但它可以在没有bash的镜像中执行，而且可以避免错误的解析命令字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN [&quot;apt-get&quot;, &quot;install&quot;, &quot;vim&quot;, &quot;-y&quot;]</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN [&quot;/bin/bash&quot;, &quot;-c&quot;, &quot;apt-get install vim -y&quot;]</span><br></pre></td></tr></table></figure>
+<p>与shell风格相同</p>
+<h3 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h3><ul>
+<li>ENTRYPOINT命令设置在容器启动时执行命令，如果有多个ENTRYPOINT指令，那只有最后一个生效。有以下两种命令格式：</li>
 </ul>
-<p>#expose memcached(s) port<br>EXPOSE 8888 8080<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### ADD</span><br><span class="line">* 将文件```&lt;src&gt;```拷贝到container的文件系统对应的路径```&lt;dest&gt;```下。</span><br><span class="line">```&lt;src&gt;```可以是文件、文件夹、URL，对于文件和文件夹```&lt;src&gt;```必须是在Dockerfile的所在的目录下且是相对路径，</span><br><span class="line">```&lt;dest&gt;```只能是容器中的绝对路径。如果路径不存在则会自动级联创建。</span><br><span class="line">* 支持模糊匹配</span><br><span class="line">* 另外ADD支持远程URL获取文件，但官方认为是strongly discouraged，建议使用wget或curl代替。</span><br><span class="line">* ADD还支持自动解压tar文件，比如ADD trusty-core-amd64.tar.gz /会线自动解压内容再COPY到在容器的/目录下。</span><br><span class="line">* ADD只有在build镜像的时候运行一次，后面运行container的时候不会再重新加载，也就是你不能在运行时通过这种方式向容器中传送文件，-v选项映射本地到容器的目录。</span><br><span class="line"></span><br><span class="line">### COPY</span><br><span class="line">* Same as ‘ADD’ but without the tar and remote url handling.</span><br><span class="line"></span><br><span class="line">* COPY的语法与功能与ADD相同，只是不支持上面讲到的```&lt;src&gt;```是远程URL、自动解压这两个特性，但是 *Best Practices for Writing Dockerfiles* 建议尽量使用COPY，并使用RUN与COPY的组合来代替ADD，这是因为虽然COPY只支持本地文件拷贝到container，但它的处理比ADD更加透明，建议只在复制tar文件时使用ADD，如ADD trusty-core-amd64.tar.gz /。</span><br><span class="line"></span><br><span class="line">### ENV</span><br><span class="line">* 用于设置环境变量：</span><br><span class="line">``` ENV &lt;key&gt; &lt;value&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;] </span><br><span class="line">或 exec 格式（推荐）</span><br><span class="line">ENTRYPOINT command param1 param2    shell格式</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -p 80:80 nginx</span><br></pre></td></tr></table></figure>
 <ul>
+<li>使用exec格式中，在docker run <image>的所有参数，都会追加到ENTRYPOINT之后，并且会覆盖CMD所指定的参数（如果有的话）。如果需要覆盖ENTRYPOINT指令，使用–entrypoint 参数。</image></li>
+<li>使用shell格式，ENTRYPOINT相当于执行/bin/sh -c <command..>，这种格式会忽略docker run和CMD的所有参数。</command..></li>
+<li>当 ENTRYPOINT 和CMD 同时设置命令时，仅前者有效，不管命令先后顺序。</li>
+<li>当 CMD 仅设置参数时，CMD 会被追加。</li>
+</ul>
+<h3 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;] </span><br><span class="line">CMD [&quot;param1&quot;,&quot;param2&quot;]  (as default parameters to ENTRYPOINT)</span><br><span class="line">CMD command param1 param2  (shell格式)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>一个Dockerfile里仅有最后一个<code>CMD</code> 指令有效，<code>CMD</code>指令的主要功能是在build完成后，为了给<code>docker run</code>启动到容器时提供默认命令或参数。</li>
+<li>它与ENTRYPOINT的功能极为相似，区别在于如果<code>docker run</code>后面出现与CMD指定的相同命令，那么CMD会被覆盖；而ENTRYPOINT会把容器名后面的所有内容都当成参数传递给其指定的命令（不会对命令覆盖，注意：在exec格式下）。</li>
+<li>CMD与RUN的区别在于，RUN是在build成镜像时就运行的，先于CMD和ENTRYPOINT的，CMD会在每次启动容器的时候运行，而RUN只在创建镜像时执行一次，固化在image中。</li>
+</ul>
+<h3 id="EXPOSE"><a href="#EXPOSE" class="headerlink" title="EXPOSE"></a>EXPOSE</h3><ul>
+<li>EXPOSE指令告诉容器在运行时要监听的端口，但是这个端口是用于多个容器之间通信用的（links），外面的host是访问不到的。要把端口暴露给外面的主机，在启动容器时使用-p选项。<br>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#expose memcached(s) port</span><br><span class="line">EXPOSE 8888 8080</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h3><ul>
+<li>将文件</li>
+</ul>
+<p><code>&lt;src&gt;</code> 拷贝到container的文件系统对应的路径 <code>&lt;dest&gt;</code>下。</p>
+<p><code>&lt;src&gt;</code> 可以是文件、文件夹、URL，对于文件和文件夹 <code>&lt;src&gt;</code>必须是在Dockerfile的所在的目录下且是相对路径，<br><code>&lt;dest&gt;</code>只能是容器中的绝对路径。如果路径不存在则会自动级联创建。</p>
+<ul>
+<li>支持模糊匹配</li>
+<li>另外ADD支持远程URL获取文件，但官方认为是strongly discouraged，建议使用wget或curl代替。</li>
+<li>ADD还支持自动解压tar文件，比如ADD trusty-core-amd64.tar.gz /会线自动解压内容再COPY到在容器的/目录下。</li>
+<li>ADD只有在build镜像的时候运行一次，后面运行container的时候不会再重新加载，也就是你不能在运行时通过这种方式向容器中传送文件，-v选项映射本地到容器的目录。</li>
+</ul>
+<h3 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h3><ul>
+<li>Same as ‘ADD’ but without the tar and remote url handling.</li>
+<li>COPY的语法与功能与ADD相同，只是不支持上面讲到的<code>&lt;src&gt;</code>是远程URL、自动解压这两个特性，但是 <em>Best Practices for Writing Dockerfiles</em> 建议尽量使用COPY，并使用RUN与COPY的组合来代替ADD，这是因为虽然COPY只支持本地文件拷贝到container，但它的处理比ADD更加透明，建议只在复制tar文件时使用ADD，如ADD trusty-core-amd64.tar.gz /。</li>
+</ul>
+<h3 id="ENV"><a href="#ENV" class="headerlink" title="ENV"></a>ENV</h3><ul>
+<li>用于设置环境变量：<br><code>ENV &lt;key&gt; &lt;value&gt;</code></li>
 <li>设置了后，后续的RUN命令都可以使用，当运行生成的镜像时这些环境变量依然有效。</li>
-<li>如果需要在运行时更改这些环境变量可以在运行<figure class="highlight docker"><figcaption><span>run```时添加```-env <key></key></span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">### VOLUME</span></span><br><span class="line">* ```<span class="keyword">VOLUME</span><span class="bash">```指令用来在容器中设置一个挂载点，可以用来让其他容器挂载以实现数据共享或对容器数据的备份、恢复或迁移。请参考文章docker容器间通信</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">### WORKDIR</span></span></span><br><span class="line"><span class="bash">* WORKDIR指令用于设置```Dockerfile```中的```RUN、CMD```和```ENTRYPOINT```指令执行命令的工作目录(默认为/目录)，该指令在```Dockerfile```文件中可以出现多次，如果使用相对路径则为相对于```WORKDIR```上一次的值，例如```WORKDIR /a，WORKDIR b，RUN <span class="built_in">pwd</span>```最终输出的当前目录是```/a/b```。（```RUN <span class="built_in">cd</span> /a/b，RUN <span class="built_in">pwd</span>```是得不到```/a/b```的)。</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">### ONBUILD</span></span></span><br><span class="line"><span class="bash">* ```ONBUILD```指令用来设置一些触发的指令，用于在当该镜像被作为基础镜像来创建其他镜像时(也就是Dockerfile中的FROM为当前镜像时)执行一些操作。</span></span><br><span class="line"><span class="bash">* ```ONBUILD```中定义的指令会在用于生成其他镜像的```Dockerfile```文件的FROM指令之后被执行，上述介绍的任何一个指令都可以用于```ONBUILD```指令，可以用来执行一些因为环境而变化的操作，使镜像更加通用。</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">*注意*</span></span><br><span class="line"><span class="bash">* ```ONBUILD```中定义的指令在当前镜像的build中不会被执行。</span></span><br><span class="line"><span class="bash">* 可以通过查看docker inspect``` &lt;image&gt; ```命令执行结果的OnBuild键来查看某个镜像ONBUILD指令定义的内容。</span></span><br><span class="line"><span class="bash">* ```ONBUILD```中定义的指令会当做引用该镜像的```Dockerfile```文件的FROM指令的一部分来执行，执行顺序会按```ONBUILD```定义的先后顺序执行，如果ONBUILD中定义的任何一个指令运行失败，则会使FROM指令中断并导致整个build失败，当所有的ONBUILD中定义的指令成功完成后，会按正常顺序继续执行build。</span></span><br><span class="line"><span class="bash">* ```ONBUILD```中定义的指令不会继承到当前引用的镜像中，也就是当引用ONBUILD的镜像创建完成后将会清除所有引用的```ONBUILD```指令。</span></span><br><span class="line"><span class="bash">* ```ONBUILD```指令不允许嵌套，例如```ONBUILD ONBUILD ADD . /data```是不允许的。</span></span><br><span class="line"><span class="bash">* ```ONBUILD```指令不会执行其定义的```FROM```或```MAINTAINER```指令。</span></span><br><span class="line"><span class="bash">例如，```Dockerfile```使用如下的内容创建了镜像 image-A</span></span><br></pre></td></tr></table></figure></li>
+<li>如果需要在运行时更改这些环境变量可以在运行<code>docker run</code>时添加<code>-env &lt;key&gt;=&lt;value&gt;</code>参数来修改。</li>
 </ul>
-<p>ONBUILD ADD . /app/src<br>ONBUILD RUN /usr/local/bin/python-build –dir /app/src<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* 如果基于 image-A 创建新的镜像时，新的```Dockerfile```中使用```FROM image-A```指定基础镜像时，会自动执行ONBUILD指令内容，等价于在后面添加了两条指令。</span><br></pre></td></tr></table></figure></p>
-<p>FROM image-A</p>
-<p>#Automatically run the following<br>ADD . /app/src<br>RUN /usr/local/bin/python-build –dir /app/src<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### USER</span><br><span class="line">* 为运行镜像时或者任何接下来的```RUN```指令指定运行用户名或UID：</span><br><span class="line"></span><br><span class="line">``` USER daemon</span><br></pre></td></tr></table></figure></p>
+<h3 id="VOLUME"><a href="#VOLUME" class="headerlink" title="VOLUME"></a>VOLUME</h3><ul>
+<li><code>VOLUME</code>指令用来在容器中设置一个挂载点，可以用来让其他容器挂载以实现数据共享或对容器数据的备份、恢复或迁移。请参考文章docker容器间通信</li>
+</ul>
+<h3 id="WORKDIR"><a href="#WORKDIR" class="headerlink" title="WORKDIR"></a>WORKDIR</h3><ul>
+<li>WORKDIR指令用于设置 <code>Dockerfile</code> 中的 <code>RUN、CMD</code> 和 <code>ENTRYPOINT</code> 指令执行命令的工作目录(默认为/目录)，该指令在<code>Dockerfile</code> 文件中可以出现多次，如果使用相对路径则为相对于 <code>WORKDIR</code> 上一次的值，例如 <code>WORKDIR /a，WORKDIR b，RUN pwd</code> 最终输出的当前目录是 <code>/a/b</code> 。（ <code>RUN cd /a/b，RUN pwd</code> 是得不到 <code>/a/b</code> 的)。</li>
+</ul>
+<h3 id="ONBUILD"><a href="#ONBUILD" class="headerlink" title="ONBUILD"></a>ONBUILD</h3><ul>
+<li><code>ONBUILD</code> 指令用来设置一些触发的指令，用于在当该镜像被作为基础镜像来创建其他镜像时(也就是Dockerfile中的FROM为当前镜像时)执行一些操作。</li>
+<li><code>ONBUILD</code> 中定义的指令会在用于生成其他镜像的 <code>Dockerfile</code> 文件的FROM指令之后被执行，上述介绍的任何一个指令都可以用于 <code>ONBUILD</code> 指令，可以用来执行一些因为环境而变化的操作，使镜像更加通用。</li>
+</ul>
+<p><em>注意</em></p>
+<ul>
+<li><code>ONBUILD</code> 中定义的指令在当前镜像的build中不会被执行。</li>
+<li>可以通过查看docker inspect <code>&lt;image&gt;</code>命令执行结果的OnBuild键来查看某个镜像ONBUILD指令定义的内容。</li>
+<li><code>ONBUILD</code> 中定义的指令会当做引用该镜像的 <code>Dockerfile</code> 文件的FROM指令的一部分来执行，执行顺序会按 <code>ONBUILD</code> 定义的先后顺序执行，如果 <code>ONBUILD</code> 中定义的任何一个指令运行失败，则会使FROM指令中断并导致整个build失败，当所有的 <code>ONBUILD</code> 中定义的指令成功完成后，会按正常顺序继续执行build。</li>
+<li><code>ONBUILD</code> 中定义的指令不会继承到当前引用的镜像中，也就是当引用ONBUILD的镜像创建完成后将会清除所有引用的 <code>ONBUILD</code> 指令。</li>
+<li><code>ONBUILD</code> 指令不允许嵌套，例如 <code>ONBUILD ONBUILD ADD . /data</code> 是不允许的。</li>
+<li><p><code>ONBUILD</code> 指令不会执行其定义的 <code>FROM</code> 或 <code>MAINTAINER</code> 指令。<br>例如， <code>Dockerfile</code> 使用如下的内容创建了镜像 <code>image-A</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ONBUILD ADD . /app/src</span><br><span class="line">ONBUILD RUN /usr/local/bin/python-build --dir /app/src</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果基于 image-A 创建新的镜像时，新的 <code>Dockerfile</code> 中使用 <code>FROM image-A</code> 指定基础镜像时，会自动执行ONBUILD指令内容，等价于在后面添加了两条指令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FROM image-A</span><br><span class="line">#Automatically run the following</span><br><span class="line">ADD . /app/src</span><br><span class="line">RUN /usr/local/bin/python-build --dir /app/src</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="USER"><a href="#USER" class="headerlink" title="USER"></a>USER</h3><ul>
+<li>为运行镜像时或者任何接下来的 <code>RUN</code> 指令指定运行用户名或UID：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USER daemon</span><br></pre></td></tr></table></figure>
 <h3 id="MAINTAINER"><a href="#MAINTAINER" class="headerlink" title="MAINTAINER"></a>MAINTAINER</h3><ul>
 <li>使用MAINTAINER指令来为生成的镜像署名作者</li>
 <li>MAINTAINER author’s name mailaddress</li>
 </ul>
-<h3 id="The"><a href="#The" class="headerlink" title="The "></a>The <figure class="highlight plain"><figcaption><span>file</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* .dockerignore用来忽略上下文目录中包含的一些image用不到的文件，它们不会传送到docker daemon。规则使用go语言的匹配语法。如：</span><br></pre></td></tr></table></figure></h3><p>$ cat .dockerignore<br>.git<br>tmp*<br>```</p>
-<ul>
-<li>更多内容参考Dockerfile最佳实践系列。官方有个Dockerfile tutorial练习Dockerfile的写法，非常简单但对于养成良好的格式、注释有一些帮助。</li>
+<h3 id="The-dockerignore-file"><a href="#The-dockerignore-file" class="headerlink" title="The .dockerignore file"></a>The <code>.dockerignore</code> file</h3><ul>
+<li><p>.dockerignore用来忽略上下文目录中包含的一些image用不到的文件，它们不会传送到docker daemon。规则使用go语言的匹配语法。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat .dockerignore</span><br><span class="line">.git</span><br><span class="line">tmp*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更多内容参考Dockerfile最佳实践系列。官方有个Dockerfile tutorial练习Dockerfile的写法，非常简单但对于养成良好的格式、注释有一些帮助。</p>
+</li>
 </ul>
 
   </div>
@@ -193,7 +258,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令介绍"><span class="toc-number">1.</span> <span class="toc-text">命令介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM"><span class="toc-number">1.1.</span> <span class="toc-text">FROM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN"><span class="toc-number">1.2.</span> <span class="toc-text">RUN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MAINTAINER"><span class="toc-number">1.3.</span> <span class="toc-text">MAINTAINER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The"><span class="toc-number">1.4.</span> <span class="toc-text">The file1* .dockerignore用来忽略上下文目录中包含的一些image用不到的文件，它们不会传送到docker daemon。规则使用go语言的匹配语法。如：</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#命令介绍"><span class="toc-number">1.1.</span> <span class="toc-text">命令介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM"><span class="toc-number">1.1.1.</span> <span class="toc-text">FROM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN"><span class="toc-number">1.1.2.</span> <span class="toc-text">RUN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENTRYPOINT"><span class="toc-number">1.1.3.</span> <span class="toc-text">ENTRYPOINT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMD"><span class="toc-number">1.1.4.</span> <span class="toc-text">CMD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXPOSE"><span class="toc-number">1.1.5.</span> <span class="toc-text">EXPOSE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ADD"><span class="toc-number">1.1.6.</span> <span class="toc-text">ADD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#COPY"><span class="toc-number">1.1.7.</span> <span class="toc-text">COPY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ENV"><span class="toc-number">1.1.8.</span> <span class="toc-text">ENV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VOLUME"><span class="toc-number">1.1.9.</span> <span class="toc-text">VOLUME</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WORKDIR"><span class="toc-number">1.1.10.</span> <span class="toc-text">WORKDIR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ONBUILD"><span class="toc-number">1.1.11.</span> <span class="toc-text">ONBUILD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#USER"><span class="toc-number">1.1.12.</span> <span class="toc-text">USER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MAINTAINER"><span class="toc-number">1.1.13.</span> <span class="toc-text">MAINTAINER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-dockerignore-file"><span class="toc-number">1.1.14.</span> <span class="toc-text">The .dockerignore file</span></a></li></ol></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

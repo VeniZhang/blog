@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="#tmux学习笔记 ##简介  Tmux 是用于在一个终端窗口中运行多个终端会话并使使终端会话运行于后台或是按需接入、断开会话的工具。  ##操作 ###会话 session  s:查看所有session $:重命名当前session d:离开session,不是关闭。 new -s :创建新的session会话###窗口 window c:新建窗口 \:??? &amp;amp;:关闭当前窗口 {窗口号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tmux笔记">
+<meta property="og:url" content="http://blog.betterself.cn/2018/01/28/tmux笔记/index.html">
+<meta property="og:site_name" content="Veni">
+<meta property="og:description" content="#tmux学习笔记 ##简介  Tmux 是用于在一个终端窗口中运行多个终端会话并使使终端会话运行于后台或是按需接入、断开会话的工具。  ##操作 ###会话 session  s:查看所有session $:重命名当前session d:离开session,不是关闭。 new -s :创建新的session会话###窗口 window c:新建窗口 \:??? &amp;amp;:关闭当前窗口 {窗口号">
+<meta property="og:updated_time" content="2018-01-28T06:40:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tmux笔记">
+<meta name="twitter:description" content="#tmux学习笔记 ##简介  Tmux 是用于在一个终端窗口中运行多个终端会话并使使终端会话运行于后台或是按需接入、断开会话的工具。  ##操作 ###会话 session  s:查看所有session $:重命名当前session d:离开session,不是关闭。 new -s :创建新的session会话###窗口 window c:新建窗口 \:??? &amp;amp;:关闭当前窗口 {窗口号">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>tmux笔记</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.betterself.cn/2018/01/28/tmux笔记/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&text=tmux笔记"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&is_video=false&description=tmux笔记"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=tmux笔记&body=Check out this article: http://blog.betterself.cn/2018/01/28/tmux笔记/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&name=tmux笔记&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前缀"><span class="toc-number">2.</span> <span class="toc-text">前缀</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        tmux笔记
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Veni</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-01-28T06:39:10.000Z" itemprop="datePublished">2018-01-28</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>#tmux学习笔记</p>
+<p>##简介</p>
+<ul>
+<li>Tmux 是用于在一个终端窗口中运行多个终端会话并使使终端会话运行于后台或是按需接入、断开会话的工具。</li>
+</ul>
+<p>##操作</p>
+<p>###会话 session</p>
+<ul>
+<li>s:查看所有session</li>
+<li>$:重命名当前session</li>
+<li>d:离开session,不是关闭。</li>
+<li>new -s <new-session-name>:创建新的session会话<br>###窗口 window</new-session-name></li>
+<li>c:新建窗口</li>
+<li>\<space>:???</space></li>
+<li>&amp;:关闭当前窗口</li>
+<li>{窗口号}:切换窗口</li>
+<li>p:切换到上一个窗口</li>
+<li>n:切换到下一个窗口</li>
+<li>,:重命名该窗口<br>###面板pane</li>
+<li>%:水平拆分出一个新pane</li>
+<li>“:竖直拆分一个新的pane</li>
+<li>z:暂时将当前pane最大化，重复按键使其复原</li>
+<li>o:切换到下一个pane$$</li>
+<li>q:产看pane编号</li>
+<li>!在新窗口中显示该pane</li>
+<li>x:关闭当前pane</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=":"></a>:</h3><ul>
+<li>setw -g mode-keys vi <ul>
+<li>设置vi按键风格<br>###命令行</li>
+</ul>
+</li>
+<li>$ tmux new -s <my-session-name><ul>
+<li>以该名字创建一个tmux会话</li>
+</ul>
+</my-session-name></li>
+<li>$ tmux attach <ul>
+<li>接入已经存在的session</li>
+</ul>
+</li>
+<li>$ tmux ls    <ul>
+<li>tmux list-session</li>
+<li>显示所有的session</li>
+</ul>
+</li>
+<li>$ tmux a<ul>
+<li>恢复上一个session </li>
+</ul>
+</li>
+<li>$ tmux a -t \<session-name><ul>
+<li>恢复指定的session</li>
+</ul>
+</session-name></li>
+<li>$ tmux detach <ul>
+<li>断开最近打开的一个会话</li>
+</ul>
+</li>
+<li><p>$ tmux kill-session -t \<session-name></session-name></p>
+<ul>
+<li>杀死该会话</li>
+</ul>
+</li>
+<li><p>$ tmux new-session <session-name></session-name></p>
+</li>
+<li>$ tmux attach-session -t <session-name></session-name></li>
+<li>$ tmux rename-session -t <session-name></session-name></li>
+<li>$ tmux choose-session -t <session-name><ul>
+<li>???</li>
+</ul>
+</session-name></li>
+<li>$ tmux kill-session -t <session-name></session-name></li>
+<li>$  setw mode-mouse on<ul>
+<li>设置鼠标滚动屏幕 </li>
+</ul>
+</li>
+<li>$  setw -g mode-mouse on<ul>
+<li>设置所有窗口滚动屏幕</li>
+</ul>
+</li>
+</ul>
+<h3 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h3><ul>
+<li>\<c-b>    </c-b></li>
+</ul>
+<p>##配置文件</p>
+<ul>
+<li>~/.tmux.conf<ul>
+<li>每当开启一个新的会话时，Tmux 都会先从 ~/.tmux.conf中方读取tmux配置。</li>
+<li>\<prefix> r:重新载入配置信息  </prefix></li>
+</ul>
+</li>
+</ul>
+<p>##管理工具</p>
+<ul>
+<li>Tmate</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text">:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前缀"><span class="toc-number">2.</span> <span class="toc-text">前缀</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.betterself.cn/2018/01/28/tmux笔记/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&text=tmux笔记"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&is_video=false&description=tmux笔记"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=tmux笔记&body=Check out this article: http://blog.betterself.cn/2018/01/28/tmux笔记/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&title=tmux笔记"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.betterself.cn/2018/01/28/tmux笔记/&name=tmux笔记&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 VeniZhang
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-86660611-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+
